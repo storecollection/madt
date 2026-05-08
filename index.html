@@ -913,8 +913,343 @@ public class MainActivity extends AppCompatActivity {
         <h2 class="program-title"></h2>
         
         <textarea id="program5" class="program-code">
-       
+   Q1 acitivity_main.xml
+		<?xml version="1.0" encoding="utf-8"?>
 
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Alert Dialog"/>
+
+</LinearLayout>
+Q1 MainActivity.java
+	package com.example.alertdialog;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btnAlert;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btnAlert = findViewById(R.id.btnAlert);
+
+        btnAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(MainActivity.this);
+
+                builder.setTitle("Alert Dialog");
+
+                builder.setMessage(
+                        "Do you want to exit?");
+
+                builder.setPositiveButton(
+                        "YES",
+
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(
+                                    DialogInterface dialogInterface,
+                                    int i) {
+
+                                finish();
+                            }
+                        });
+
+                builder.setNegativeButton(
+                        "NO",
+
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(
+                                    DialogInterface dialogInterface,
+                                    int i) {
+
+                                Toast.makeText(
+                                        MainActivity.this,
+                                        "Cancelled",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                builder.show();
+            }
+        });
+    }
+}		
+Q2 activity_main.xml
+	<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Name"/>
+
+    <!-- Radio Buttons -->
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <RadioButton
+            android:id="@+id/rbRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Red"/>
+
+        <RadioButton
+            android:id="@+id/rbBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blue"/>
+
+        <RadioButton
+            android:id="@+id/rbGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Green"/>
+    </RadioGroup>
+
+    <!-- Checkboxes -->
+
+    <CheckBox
+        android:id="@+id/cbBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bold"/>
+
+    <CheckBox
+        android:id="@+id/cbItalic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Italic"/>
+
+    <CheckBox
+        android:id="@+id/cbUnderline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Underline"/>
+
+    <!-- Buttons -->
+
+    <Button
+        android:id="@+id/btnDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Display"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnExit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exit"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Label -->
+
+    <TextView
+        android:id="@+id/txtMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>
+
+</ScrollView>
+Q2 MainActivity.java
+	package com.example.textformat;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etName;
+    TextView txtMessage;
+
+    RadioButton rbRed, rbBlue, rbGreen;
+
+    CheckBox cbBold, cbItalic, cbUnderline;
+
+    Button btnDisplay, btnClear, btnExit;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etName = findViewById(R.id.etName);
+
+        txtMessage = findViewById(R.id.txtMessage);
+
+        rbRed = findViewById(R.id.rbRed);
+        rbBlue = findViewById(R.id.rbBlue);
+        rbGreen = findViewById(R.id.rbGreen);
+
+        cbBold = findViewById(R.id.cbBold);
+        cbItalic = findViewById(R.id.cbItalic);
+        cbUnderline = findViewById(R.id.cbUnderline);
+
+        btnDisplay = findViewById(R.id.btnDisplay);
+        btnClear = findViewById(R.id.btnClear);
+        btnExit = findViewById(R.id.btnExit);
+
+        // Display Button
+
+        btnDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String name =
+                        etName.getText().toString();
+
+                txtMessage.setText(
+                        "Welcome " + name);
+
+                // Change Color
+
+                if(rbRed.isChecked()) {
+
+                    txtMessage.setTextColor(
+                            Color.RED);
+                }
+
+                if(rbBlue.isChecked()) {
+
+                    txtMessage.setTextColor(
+                            Color.BLUE);
+                }
+
+                if(rbGreen.isChecked()) {
+
+                    txtMessage.setTextColor(
+                            Color.GREEN);
+                }
+
+                // Bold + Italic
+
+                if(cbBold.isChecked() &&
+                        cbItalic.isChecked()) {
+
+                    txtMessage.setTypeface(
+                            null,
+                            Typeface.BOLD_ITALIC);
+                }
+
+                else if(cbBold.isChecked()) {
+
+                    txtMessage.setTypeface(
+                            null,
+                            Typeface.BOLD);
+                }
+
+                else if(cbItalic.isChecked()) {
+
+                    txtMessage.setTypeface(
+                            null,
+                            Typeface.ITALIC);
+                }
+
+                else {
+
+                    txtMessage.setTypeface(
+                            null,
+                            Typeface.NORMAL);
+                }
+
+                // Underline
+
+                if(cbUnderline.isChecked()) {
+
+                    txtMessage.setPaintFlags(
+                            txtMessage.getPaintFlags()
+                                    | Paint.UNDERLINE_TEXT_FLAG);
+                }
+            }
+        });
+
+        // Clear Button
+
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                etName.setText("");
+                txtMessage.setText("");
+
+                cbBold.setChecked(false);
+                cbItalic.setChecked(false);
+                cbUnderline.setChecked(false);
+            }
+        });
+
+        // Exit Button
+
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                finish();
+            }
+        });
+    }
+}		
+
+			
         </textarea>
         
         <button id="btn-program5" onclick="copyProgram('program5', 'btn-program5')">slip5</button>
@@ -924,7 +1259,186 @@ public class MainActivity extends AppCompatActivity {
         <h2 class="program-title"></h2>
         
         <textarea id="program6" class="program-code">
-    
+ Q1 acitivity_main.xml
+	<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Username"/>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+Q1 mainactivity.java
+	package com.example.loginform;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etUsername, etPassword;
+    Button btnLogin;
+    TextView txtResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword);
+
+        btnLogin = findViewById(R.id.btnLogin);
+
+        txtResult = findViewById(R.id.txtResult);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String username =
+                        etUsername.getText().toString();
+
+                String password =
+                        etPassword.getText().toString();
+
+                // Validation
+
+                if(username.isEmpty()) {
+
+                    etUsername.setError(
+                            "Enter Username");
+                }
+
+                else if(password.isEmpty()) {
+
+                    etPassword.setError(
+                            "Enter Password");
+                }
+
+                else if(username.equals("admin")
+                        && password.equals("1234")) {
+
+                    txtResult.setText(
+                            "Login Successful");
+                }
+
+                else {
+
+                    txtResult.setText(
+                            "Invalid Username or Password");
+                }
+            }
+        });
+    }
+}
+Q2 acitivity_main.xml
+	<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/etLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Location"/>
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search Location"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+Q2 mainacitity.java
+	package com.example.googlemap;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etLocation;
+    Button btnSearch;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etLocation = findViewById(R.id.etLocation);
+        btnSearch = findViewById(R.id.btnSearch);
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String location =
+                        etLocation.getText().toString();
+
+                Uri uri = Uri.parse(
+                        "geo:0,0?q=" + location);
+
+                Intent intent =
+                        new Intent(Intent.ACTION_VIEW, uri);
+
+                intent.setPackage(
+                        "com.google.android.apps.maps");
+
+                startActivity(intent);
+            }
+        });
+    }
+}		
 
         </textarea>
         
