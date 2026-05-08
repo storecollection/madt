@@ -4056,7 +4056,113 @@ public class MainActivity extends AppCompatActivity {
     <h2 class="program-title"></h2>
     
     <textarea id="program16" class="program-code">
-    
+Q1 .xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Hello"/>
+</LinearLayout>
+Q1 .java
+package com.example.hellointent;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btnSend;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btnSend = findViewById(R.id.btnSend);
+
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("message", "Hello");
+
+                startActivity(intent);
+            }
+        });
+    }
+}
+Q2 .xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/etPlayerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Player Name"/>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
+Q2 .java
+package com.example.playerapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etPlayerName;
+    Button btnSubmit;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etPlayerName = findViewById(R.id.etPlayerName);
+        btnSubmit = findViewById(R.id.btnSubmit);
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String name = etPlayerName.getText().toString();
+
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("player_name", name);
+
+                startActivity(intent);
+            }
+        });
+    }
+}		
     
     </textarea>
     
@@ -4067,7 +4173,235 @@ public class MainActivity extends AppCompatActivity {
     <h2 class="program-title"></h2>
     
     <textarea id="program17" class="program-code">
+Q1 .xml
+	<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity Life Cycle Demo"
+        android:textSize="20sp"/>
+</LinearLayout>
+Q1 .xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity Life Cycle Demo"
+        android:textSize="20sp"/>
+</LinearLayout>
+Q1 .java
+	package com.example.lifecycledemo;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    String TAG = "LIFECYCLE_DEMO";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Toast.makeText(this, "onCreate Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onCreate Called");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Toast.makeText(this, "onStart Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onStart Called");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "onResume Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onResume Called");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(this, "onPause Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onPause Called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(this, "onStop Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onStop Called");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Toast.makeText(this, "onRestart Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onRestart Called");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(this, "onDestroy Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onDestroy Called");
+    }
+}
+Q2 index.html
+	<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact App</title>
+</head>
+
+<body>
+    <h2>PhoneGap Contact Application</h2>
+
+    <input type="text" id="name" placeholder="Enter Name"><br><br>
+    <input type="text" id="phone" placeholder="Enter Phone Number"><br><br>
+
+    <button onclick="createContact()">Create Contact</button>
+    <button onclick="searchContact()">Search Contact</button>
+    <button onclick="cloneContact()">Clone Contact</button>
+    <button onclick="deleteContact()">Remove Contact</button>
+
+    <p id="status"></p>
+
+    <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+Q2 .js
+	
+// ✅ CREATE CONTACT
+function createContact() {
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+
+    var contact = navigator.contacts.create();
+    contact.displayName = name;
+
+    var phoneNumbers = [];
+    phoneNumbers[0] = new ContactField('mobile', phone, true);
+    contact.phoneNumbers = phoneNumbers;
+
+    contact.save(function() {
+        document.getElementById("status").innerHTML = "Contact Created Successfully!";
+    }, function(err) {
+        document.getElementById("status").innerHTML = "Error Creating Contact";
+    });
+}
+
+
+// 🔍 SEARCH CONTACT
+function searchContact() {
+    var name = document.getElementById("name").value;
+
+    var options = new ContactFindOptions();
+    options.filter = name;
+    options.multiple = true;
+
+    var fields = ["displayName"];
+
+    navigator.contacts.find(fields, function(contacts) {
+        if (contacts.length > 0) {
+            document.getElementById("status").innerHTML =
+                "Contact Found: " + contacts[0].displayName;
+        } else {
+            document.getElementById("status").innerHTML = "No Contact Found";
+        }
+    }, function(error) {
+        document.getElementById("status").innerHTML = "Search Failed";
+    }, options);
+}
+
+
+// 📋 CLONE CONTACT
+function cloneContact() {
+    var name = document.getElementById("name").value;
+
+    var options = new ContactFindOptions();
+    options.filter = name;
+    options.multiple = false;
+
+    var fields = ["displayName", "phoneNumbers"];
+
+    navigator.contacts.find(fields, function(contacts) {
+
+        if (contacts.length > 0) {
+
+            var oldContact = contacts[0];
+
+            var newContact = navigator.contacts.create();
+            newContact.displayName = oldContact.displayName + "_copy";
+            newContact.phoneNumbers = oldContact.phoneNumbers;
+
+            newContact.save(function() {
+                document.getElementById("status").innerHTML =
+                    "Contact Cloned Successfully!";
+            });
+
+        } else {
+            document.getElementById("status").innerHTML = "Original Contact Not Found";
+        }
+
+    }, function() {
+        document.getElementById("status").innerHTML = "Clone Failed";
+    }, options);
+}
+
+
+// ❌ DELETE CONTACT
+function deleteContact() {
+    var name = document.getElementById("name").value;
+
+    var options = new ContactFindOptions();
+    options.filter = name;
+    options.multiple = false;
+
+    var fields = ["displayName"];
+
+    navigator.contacts.find(fields, function(contacts) {
+
+        if (contacts.length > 0) {
+            contacts[0].remove(function() {
+                document.getElementById("status").innerHTML =
+                    "Contact Deleted Successfully!";
+            }, function() {
+                document.getElementById("status").innerHTML =
+                    "Delete Failed";
+            });
+
+        } else {
+            document.getElementById("status").innerHTML =
+                "Contact Not Found";
+        }
+
+    }, function() {
+        document.getElementById("status").innerHTML =
+            "Error in Deleting Contact";
+    }, options);
+}	
+		
     </textarea>
     
     <button id="btn-program17" onclick="copyProgram('program17', 'btn-program17')">slip17</button>
@@ -4077,7 +4411,233 @@ public class MainActivity extends AppCompatActivity {
     <h2 class="program-title"></h2>
     
     <textarea id="program18" class="program-code">
+Q1 .xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
 
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello Android"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/btnColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Color"/>
+
+    <Button
+        android:id="@+id/btnFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Font Size"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>
+Q1 .java
+package com.example.uichangeapp;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    LinearLayout rootLayout;
+    TextView tvText;
+    Button btnColor, btnFont;
+
+    float textSize = 20f; // initial font size
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        rootLayout = findViewById(R.id.rootLayout);
+        tvText = findViewById(R.id.tvText);
+        btnColor = findViewById(R.id.btnColor);
+        btnFont = findViewById(R.id.btnFont);
+
+        // 🎨 Change background color
+        btnColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                rootLayout.setBackgroundColor(Color.CYAN);
+            }
+        });
+
+        // 🔤 Change font size
+        btnFont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                textSize = textSize + 5;
+                tvText.setTextSize(textSize);
+            }
+        });
+    }
+}
+Q2 DBHelper.java
+	package com.example.sqliteapp;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DBHelper extends SQLiteOpenHelper {
+
+    public static final String DB_NAME = "ProjectDB";
+    public static final String TABLE_NAME = "Project";
+
+    public DBHelper(Context context) {
+        super(context, DB_NAME, null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL("CREATE TABLE " + TABLE_NAME +
+                "(id INTEGER PRIMARY KEY, name TEXT, dept TEXT, city TEXT)");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
+
+    // ➕ Insert record
+    public void insertProject(int id, String name, String dept, String city) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id", id);
+        values.put("name", name);
+        values.put("dept", dept);
+        values.put("city", city);
+
+        db.insert(TABLE_NAME, null, values);
+    }
+
+    // 📄 Get all records
+    public Cursor getAllProjects() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+    }
+}
+Q2 .xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/btnInsert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insert 5 Records"/>
+
+    <Button
+        android:id="@+id/btnShow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Records"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
+Q2 .java
+	package com.example.sqliteapp;
+
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    DBHelper dbHelper;
+    Button btnInsert, btnShow;
+    TextView tvResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        dbHelper = new DBHelper(this);
+
+        btnInsert = findViewById(R.id.btnInsert);
+        btnShow = findViewById(R.id.btnShow);
+        tvResult = findViewById(R.id.tvResult);
+
+        // ➕ Insert 5 records
+        btnInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dbHelper.insertProject(1, "Alpha", "IT", "Mumbai");
+                dbHelper.insertProject(2, "Beta", "CS", "Pune");
+                dbHelper.insertProject(3, "Gamma", "IT", "Delhi");
+                dbHelper.insertProject(4, "Delta", "ME", "Nashik");
+                dbHelper.insertProject(5, "Epsilon", "EC", "Nagpur");
+
+                tvResult.setText("5 Records Inserted Successfully!");
+            }
+        });
+
+        // 📄 Display all records
+        btnShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Cursor cursor = dbHelper.getAllProjects();
+
+                StringBuilder builder = new StringBuilder();
+
+                while (cursor.moveToNext()) {
+
+                    builder.append("ID: ").append(cursor.getInt(0)).append("\n");
+                    builder.append("Name: ").append(cursor.getString(1)).append("\n");
+                    builder.append("Dept: ").append(cursor.getString(2)).append("\n");
+                    builder.append("City: ").append(cursor.getString(3)).append("\n\n");
+                }
+
+                tvResult.setText(builder.toString());
+            }
+        });
+    }
+}	
+		
     </textarea>
     
     <button id="btn-program18" onclick="copyProgram('program18', 'btn-program18')">slip18</button>
@@ -4087,7 +4647,163 @@ public class MainActivity extends AppCompatActivity {
     <h2 class="program-title"></h2>
     
     <textarea id="program19" class="program-code">
-		
+Q! .xml
+		<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/img1"
+        android:scaleType="centerCrop"/>
+
+    <Button
+        android:id="@+id/btnChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Image"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
+Q1 .java
+	package com.example.imagechangeapp;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    ImageView imageView;
+    Button btnChange;
+
+    int imageIndex = 0;
+
+    int[] images = {
+            R.drawable.img1,
+            R.drawable.img2,
+            R.drawable.img3
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView = findViewById(R.id.imageView);
+        btnChange = findViewById(R.id.btnChange);
+
+        btnChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                imageIndex++;
+
+                if (imageIndex >= images.length) {
+                    imageIndex = 0;
+                }
+
+                imageView.setImageResource(images[imageIndex]);
+            }
+        });
+    }
+}
+Q2 .xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/etNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter a Number"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Result will appear here"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
+Q2 .java
+package com.example.menuapp;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etNumber;
+    TextView tvResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etNumber = findViewById(R.id.etNumber);
+        tvResult = findViewById(R.id.tvResult);
+    }
+
+    // 📌 Inflate menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    // 📌 Handle menu clicks
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int num = Integer.parseInt(etNumber.getText().toString());
+
+        if (item.getItemId() == R.id.menu_factorial) {
+
+            long fact = 1;
+            for (int i = 1; i <= num; i++) {
+                fact = fact * i;
+            }
+
+            tvResult.setText("Factorial: " + fact);
+        }
+
+        else if (item.getItemId() == R.id.menu_sum) {
+
+            int sum = 0;
+            int temp = num;
+
+            while (temp > 0) {
+                sum += temp % 10;
+                temp = temp / 10;
+            }
+
+            tvResult.setText("Sum of Digits: " + sum);
+        }
+
+        return true;
+    }
+}		
  </textarea>
     <button id="btn-program19" onclick="copyProgram('program19', 'btn-program19')">slip19</button>
 </div>    
@@ -4096,7 +4812,174 @@ public class MainActivity extends AppCompatActivity {
     <h2 class="program-title"></h2>
     
     <textarea id="program20" class="program-code">
+Q! .xml
+	<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
 
+    <EditText
+        android:id="@+id/etNum1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter First Number"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/etNum2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Second Number"
+        android:inputType="number"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
+Q1 .java
+package com.example.validationapp;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etNum1, etNum2;
+    Button btnSubmit;
+    TextView tvResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etNum1 = findViewById(R.id.etNum1);
+        etNum2 = findViewById(R.id.etNum2);
+        btnSubmit = findViewById(R.id.btnSubmit);
+        tvResult = findViewById(R.id.tvResult);
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String s1 = etNum1.getText().toString();
+                String s2 = etNum2.getText().toString();
+
+                if (s1.isEmpty() || s2.isEmpty()) {
+                    Toast.makeText(MainActivity.this,
+                            "Please enter both numbers",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int num1 = Integer.parseInt(s1);
+                int num2 = Integer.parseInt(s2);
+
+                // ❌ Validation condition
+                if (num1 > 20 && num2 > 20) {
+
+                    Toast.makeText(MainActivity.this,
+                            "Both numbers cannot be greater than 20. Enter again.",
+                            Toast.LENGTH_LONG).show();
+
+                    etNum1.setText("");
+                    etNum2.setText("");
+                    tvResult.setText("Invalid Input");
+
+                } else {
+
+                    // ✅ Display numbers
+                    tvResult.setText("Number 1: " + num1 +
+                            "\nNumber 2: " + num2);
+                }
+            }
+        });
+    }
+}
+Q2 .xml
+	<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/btnSendMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Email with Attachment"/>
+</LinearLayout>
+Q2 .java
+package com.example.emailapp;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btnSendMail;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btnSendMail = findViewById(R.id.btnSendMail);
+
+        btnSendMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // 📌 Email details
+                String[] to = {"example@gmail.com"};
+                String subject = "Test Email";
+                String body = "Hello, this email has an attachment.";
+
+                // 📎 Attachment (file path in device storage)
+                Uri attachment = Uri.parse("file:///sdcard/Download/sample.pdf");
+
+                // 📧 Email Intent
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+                emailIntent.setType("application/pdf");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, to);
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+                emailIntent.putExtra(Intent.EXTRA_STREAM, attachment);
+
+                // 📌 Open email apps
+                startActivity(Intent.createChooser(emailIntent, "Send Email using:"));
+            }
+        });
+    }
+}		
     </textarea>   
     <button id="btn-program20" onclick="copyProgram('program20', 'btn-program20')">slip20</button>
 </div>
@@ -4105,7 +4988,201 @@ public class MainActivity extends AppCompatActivity {
     <h2 class="program-title"></h2>
     
     <textarea id="program21" class="program-code">
+Q1 .xml
+	<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity Life Cycle Demo"
+        android:textSize="22sp"/>
+</LinearLayout>
+Q1 .java
+package com.example.lifecycledemo;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    String TAG = "LIFECYCLE_DEMO";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Toast.makeText(this, "onCreate Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onCreate Called");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Toast.makeText(this, "onStart Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onStart Called");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "onResume Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onResume Called");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(this, "onPause Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onPause Called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(this, "onStop Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onStop Called");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Toast.makeText(this, "onRestart Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onRestart Called");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(this, "onDestroy Called", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onDestroy Called");
+    }
+}
+Q2 .xml
+	<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/etData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter text to save"/>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save to SD Card"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
+Q2 .java
+package com.example.sdcardapp;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.os.Environment;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import java.io.File;
+import java.io.FileOutputStream;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etData;
+    Button btnSave;
+    TextView tvStatus;
+
+    private static final int REQUEST_CODE = 1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etData = findViewById(R.id.etData);
+        btnSave = findViewById(R.id.btnSave);
+        tvStatus = findViewById(R.id.tvStatus);
+
+        // 🔐 Runtime permission check
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_CODE);
+        }
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String data = etData.getText().toString();
+
+                if (data.isEmpty()) {
+                    Toast.makeText(MainActivity.this,
+                            "Enter some text", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                writeToSDCard(data);
+            }
+        });
+    }
+
+    // 💾 Write data to SD Card
+    private void writeToSDCard(String data) {
+
+        try {
+            File folder = new File(Environment.getExternalStorageDirectory(), "MyFiles");
+
+            if (!folder.exists()) {
+                folder.mkdirs();
+            }
+
+            File file = new File(folder, "data.txt");
+
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(data.getBytes());
+            fos.close();
+
+            tvStatus.setText("Data saved successfully at:\n" + file.getPath());
+
+        } catch (Exception e) {
+            tvStatus.setText("Error: " + e.getMessage());
+        }
+    }
+}		
     </textarea>
     
     <button id="btn-program21" onclick="copyProgram('program21', 'btn-program21')">slip21</button>
@@ -4115,7 +5192,215 @@ public class MainActivity extends AppCompatActivity {
     <h2 class="program-title"></h2>
     
     <textarea id="program22" class="program-code">
+Q1 .xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/img1"
+        android:scaleType="centerCrop"/>
+
+    <Button
+        android:id="@+id/btnChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Image"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
+Q1 .java
+	package com.example.imagechangeapp;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    ImageView imageView;
+    Button btnChange;
+
+    int index = 0;
+
+    int[] images = {
+            R.drawable.img1,
+            R.drawable.img2,
+            R.drawable.img3
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView = findViewById(R.id.imageView);
+        btnChange = findViewById(R.id.btnChange);
+
+        btnChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                index++;
+
+                if (index >= images.length) {
+                    index = 0;
+                }
+
+                imageView.setImageResource(images[index]);
+            }
+        });
+    }
+}
+Q2 .xml
+	<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/etNum1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter First Number"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/etNum2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Second Number"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="10dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <RadioButton
+            android:id="@+id/rbAdd"
+            android:text="Addition"/>
+
+        <RadioButton
+            android:id="@+id/rbSub"
+            android:text="Subtraction"/>
+
+        <RadioButton
+            android:id="@+id/rbMul"
+            android:text="Multiplication"/>
+
+        <RadioButton
+            android:id="@+id/rbDiv"
+            android:text="Division"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
+Q2 .java 
+	package com.example.radiooperation;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etNum1, etNum2;
+    RadioGroup radioGroup;
+    RadioButton rbAdd, rbSub, rbMul, rbDiv;
+    Button btnCalculate;
+    TextView tvResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etNum1 = findViewById(R.id.etNum1);
+        etNum2 = findViewById(R.id.etNum2);
+
+        radioGroup = findViewById(R.id.radioGroup);
+
+        rbAdd = findViewById(R.id.rbAdd);
+        rbSub = findViewById(R.id.rbSub);
+        rbMul = findViewById(R.id.rbMul);
+        rbDiv = findViewById(R.id.rbDiv);
+
+        btnCalculate = findViewById(R.id.btnCalculate);
+        tvResult = findViewById(R.id.tvResult);
+
+        btnCalculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                double num1 = Double.parseDouble(etNum1.getText().toString());
+                double num2 = Double.parseDouble(etNum2.getText().toString());
+                double result = 0;
+
+                if (rbAdd.isChecked()) {
+                    result = num1 + num2;
+                    tvResult.setText("Addition: " + result);
+                }
+
+                else if (rbSub.isChecked()) {
+                    result = num1 - num2;
+                    tvResult.setText("Subtraction: " + result);
+                }
+
+                else if (rbMul.isChecked()) {
+                    result = num1 * num2;
+                    tvResult.setText("Multiplication: " + result);
+                }
+
+                else if (rbDiv.isChecked()) {
+
+                    if (num2 == 0) {
+                        tvResult.setText("Cannot divide by zero");
+                    } else {
+                        result = num1 / num2;
+                        tvResult.setText("Division: " + result);
+                    }
+                }
+
+                else {
+                    tvResult.setText("Please select an operation");
+                }
+            }
+        });
+    }
+}	
     </textarea>
     
     <button id="btn-program22" onclick="copyProgram('program22', 'btn-program22')">slip22</button>
@@ -4125,7 +5410,281 @@ public class MainActivity extends AppCompatActivity {
     <h2 class="program-title"></h2>
     
     <textarea id="program23" class="program-code">
+Q1 .xml
+	<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
 
+    <Button
+        android:id="@+id/btnCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dial Number"/>
+
+    <Button
+        android:id="@+id/btnWeb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Website"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Email"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>
+Q1 .java
+	package com.example.implicitintentdemo;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btnCall, btnWeb, btnEmail;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btnCall = findViewById(R.id.btnCall);
+        btnWeb = findViewById(R.id.btnWeb);
+        btnEmail = findViewById(R.id.btnEmail);
+
+        // 📞 Dial Number
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:1234567890"));
+                startActivity(callIntent);
+            }
+        });
+
+        // 🌐 Open Website
+        btnWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent webIntent = new Intent(Intent.ACTION_VIEW);
+                webIntent.setData(Uri.parse("https://www.google.com"));
+                startActivity(webIntent);
+            }
+        });
+
+        // 📧 Send Email
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+                emailIntent.setType("message/rfc822");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL,
+                        new String[]{"example@gmail.com"});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test Email");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "Hello from Android App");
+
+                startActivity(Intent.createChooser(emailIntent, "Choose Email App"));
+            }
+        });
+    }
+}
+Q2 .xml
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <!-- Input -->
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your Name"/>
+
+    <!-- Label -->
+    <TextView
+        android:id="@+id/tvLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Output will appear here"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Color Selection (Radio Buttons) -->
+    <RadioGroup
+        android:id="@+id/radioGroupColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <RadioButton
+            android:id="@+id/rbRed"
+            android:text="Red"/>
+
+        <RadioButton
+            android:id="@+id/rbBlue"
+            android:text="Blue"/>
+
+        <RadioButton
+            android:id="@+id/rbGreen"
+            android:text="Green"/>
+    </RadioGroup>
+
+    <!-- Style Options (Checkboxes) -->
+    <CheckBox
+        android:id="@+id/cbBold"
+        android:text="Bold"/>
+
+    <CheckBox
+        android:id="@+id/cbItalic"
+        android:text="Italic"/>
+
+    <CheckBox
+        android:id="@+id/cbUnderline"
+        android:text="Underline"/>
+
+    <!-- Buttons -->
+    <Button
+        android:id="@+id/btnDisplay"
+        android:text="Display"/>
+
+    <Button
+        android:id="@+id/btnClear"
+        android:text="Clear"/>
+
+    <Button
+        android:id="@+id/btnExit"
+        android:text="Exit"/>
+
+</LinearLayout>
+</ScrollView>
+Q2 .java
+package com.example.formatlabelapp;
+
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.*;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etName;
+    TextView tvLabel;
+    RadioGroup radioGroupColor;
+    RadioButton rbRed, rbBlue, rbGreen;
+    CheckBox cbBold, cbItalic, cbUnderline;
+    Button btnDisplay, btnClear, btnExit;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etName = findViewById(R.id.etName);
+        tvLabel = findViewById(R.id.tvLabel);
+
+        radioGroupColor = findViewById(R.id.radioGroupColor);
+        rbRed = findViewById(R.id.rbRed);
+        rbBlue = findViewById(R.id.rbBlue);
+        rbGreen = findViewById(R.id.rbGreen);
+
+        cbBold = findViewById(R.id.cbBold);
+        cbItalic = findViewById(R.id.cbItalic);
+        cbUnderline = findViewById(R.id.cbUnderline);
+
+        btnDisplay = findViewById(R.id.btnDisplay);
+        btnClear = findViewById(R.id.btnClear);
+        btnExit = findViewById(R.id.btnExit);
+
+        // 📌 Display Button
+        btnDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String name = etName.getText().toString();
+                String message = "Hello " + name;
+
+                tvLabel.setText(message);
+
+                // 🎨 Color selection
+                if (rbRed.isChecked()) {
+                    tvLabel.setTextColor(Color.RED);
+                } else if (rbBlue.isChecked()) {
+                    tvLabel.setTextColor(Color.BLUE);
+                } else if (rbGreen.isChecked()) {
+                    tvLabel.setTextColor(Color.GREEN);
+                }
+
+                // ✍ Bold + Italic
+                if (cbBold.isChecked() && cbItalic.isChecked()) {
+                    tvLabel.setTypeface(null, android.graphics.Typeface.BOLD_ITALIC);
+                } else if (cbBold.isChecked()) {
+                    tvLabel.setTypeface(null, android.graphics.Typeface.BOLD);
+                } else if (cbItalic.isChecked()) {
+                    tvLabel.setTypeface(null, android.graphics.Typeface.ITALIC);
+                } else {
+                    tvLabel.setTypeface(null, android.graphics.Typeface.NORMAL);
+                }
+
+                // ⬇ Underline
+                if (cbUnderline.isChecked()) {
+                    tvLabel.setPaintFlags(tvLabel.getPaintFlags()
+                            | Paint.UNDERLINE_TEXT_FLAG);
+                } else {
+                    tvLabel.setPaintFlags(0);
+                }
+            }
+        });
+
+        // 🧹 Clear Button
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                etName.setText("");
+                tvLabel.setText("Output will appear here");
+
+                radioGroupColor.clearCheck();
+                cbBold.setChecked(false);
+                cbItalic.setChecked(false);
+                cbUnderline.setChecked(false);
+            }
+        });
+
+        // ❌ Exit Button
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+}		
     </textarea>
     
     <button id="btn-program23" onclick="copyProgram('program23', 'btn-program23')">slip23</button>
@@ -4135,7 +5694,250 @@ public class MainActivity extends AppCompatActivity {
     <h2 class="program-title"></h2>
     
     <textarea id="program24" class="program-code">
+Q1 .xml
+	<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
 
+    <EditText
+        android:id="@+id/etString"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter a String"/>
+
+    <Button
+        android:id="@+id/btnUpper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Uppercase"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnLower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lowercase"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>
+Q1 .java
+	package com.example.stringapp;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etString;
+    Button btnUpper, btnLower;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etString = findViewById(R.id.etString);
+        btnUpper = findViewById(R.id.btnUpper);
+        btnLower = findViewById(R.id.btnLower);
+
+        // 🔠 Uppercase Button
+        btnUpper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String input = etString.getText().toString();
+
+                if (input.isEmpty()) {
+                    Toast.makeText(MainActivity.this,
+                            "Please enter a string",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    String result = input.toUpperCase();
+
+                    Toast.makeText(MainActivity.this,
+                            "Uppercase: " + result,
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        // 🔡 Lowercase Button
+        btnLower.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String input = etString.getText().toString();
+
+                if (input.isEmpty()) {
+                    Toast.makeText(MainActivity.this,
+                            "Please enter a string",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    String result = input.toLowerCase();
+
+                    Toast.makeText(MainActivity.this,
+                            "Lowercase: " + result,
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+}
+Q2 DBHelper.java
+		package com.example.cardb;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DBHelper extends SQLiteOpenHelper {
+
+    public static final String DB_NAME = "CarDB";
+    public static final String TABLE_NAME = "Car";
+
+    public DBHelper(Context context) {
+        super(context, DB_NAME, null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL("CREATE TABLE " + TABLE_NAME +
+                "(id INTEGER PRIMARY KEY, name TEXT, type TEXT, color TEXT)");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
+
+    // ➕ Insert Car
+    public void insertCar(int id, String name, String type, String color) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id", id);
+        values.put("name", name);
+        values.put("type", type);
+        values.put("color", color);
+
+        db.insert(TABLE_NAME, null, values);
+    }
+
+    // 📄 Fetch all cars
+    public Cursor getAllCars() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+    }
+}
+Q2 .xml
+		<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/btnInsert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insert 5 Cars"/>
+
+    <Button
+        android:id="@+id/btnShow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show All Cars"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
+		Q2 .java
+	package com.example.cardb;
+
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    DBHelper dbHelper;
+    Button btnInsert, btnShow;
+    TextView tvResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        dbHelper = new DBHelper(this);
+
+        btnInsert = findViewById(R.id.btnInsert);
+        btnShow = findViewById(R.id.btnShow);
+        tvResult = findViewById(R.id.tvResult);
+
+        // ➕ Insert 5 records
+        btnInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dbHelper.insertCar(1, "Swift", "Hatchback", "Red");
+                dbHelper.insertCar(2, "City", "Sedan", "White");
+                dbHelper.insertCar(3, "Fortuner", "SUV", "Black");
+                dbHelper.insertCar(4, "Nano", "Mini", "Yellow");
+                dbHelper.insertCar(5, "BMW X5", "SUV", "Blue");
+
+                tvResult.setText("5 Car Records Inserted Successfully!");
+            }
+        });
+
+        // 📄 Show all records
+        btnShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Cursor cursor = dbHelper.getAllCars();
+
+                StringBuilder builder = new StringBuilder();
+
+                while (cursor.moveToNext()) {
+
+                    builder.append("ID: ").append(cursor.getInt(0)).append("\n");
+                    builder.append("Name: ").append(cursor.getString(1)).append("\n");
+                    builder.append("Type: ").append(cursor.getString(2)).append("\n");
+                    builder.append("Color: ").append(cursor.getString(3)).append("\n\n");
+                }
+
+                tvResult.setText(builder.toString());
+            }
+        });
+    }
+}	
+		
     </textarea>
     
     <button id="btn-program24" onclick="copyProgram('program24', 'btn-program24')">slip24</button>
@@ -4145,7 +5947,188 @@ public class MainActivity extends AppCompatActivity {
     <h2 class="program-title"></h2>
     
     <textarea id="program25" class="program-code">
+Q1 .xml
+	<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
 
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Phone Number"
+        android:inputType="phone"/>
+
+    <EditText
+        android:id="@+id/etMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Message"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send SMS"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
+Q1 .java
+	package com.example.smsapp;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etPhone, etMessage;
+    Button btnSend;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etPhone = findViewById(R.id.etPhone);
+        etMessage = findViewById(R.id.etMessage);
+        btnSend = findViewById(R.id.btnSend);
+
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String phone = etPhone.getText().toString();
+                String message = etMessage.getText().toString();
+
+                if (phone.isEmpty() || message.isEmpty()) {
+                    Toast.makeText(MainActivity.this,
+                            "Please enter phone and message",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // 📩 Implicit Intent for SMS
+                Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
+                smsIntent.setData(Uri.parse("smsto:" + phone));
+                smsIntent.putExtra("sms_body", message);
+
+                try {
+                    startActivity(smsIntent);
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this,
+                            "No SMS app found",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+}
+Q2 .xml
+	<?xml version="1.0" encoding="utf-8"?>
+<TableLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <!-- Username Row -->
+    <TableRow>
+
+        <TextView
+            android:text="Username:"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+
+    <!-- Password Row -->
+    <TableRow>
+
+        <TextView
+            android:text="Password:"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </TableRow>
+
+    <!-- Login Button Row -->
+    <TableRow
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"/>
+    </TableRow>
+
+</TableLayout>
+Q2 .java
+	package com.example.loginapp;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etUsername, etPassword;
+    Button btnLogin;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword);
+        btnLogin = findViewById(R.id.btnLogin);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String username = etUsername.getText().toString();
+                String password = etPassword.getText().toString();
+
+                // 🔐 Condition: username and password must be same
+                if (username.equals(password) && !username.isEmpty()) {
+
+                    Toast.makeText(MainActivity.this,
+                            "Login Successful...",
+                            Toast.LENGTH_LONG).show();
+
+                } else {
+
+                    Toast.makeText(MainActivity.this,
+                            "Invalid Login",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+}	
     </textarea>
     
     <button id="btn-program25" onclick="copyProgram('program25', 'btn-program25')">slip25</button>
